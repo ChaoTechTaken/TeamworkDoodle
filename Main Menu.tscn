@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://bopx5ynx27kv3"]
+
+[ext_resource type="Script" uid="uid://bejrxf8pkd4x0" path="res://main_menu.gd" id="1_5b7ti"]
+
+[sub_resource type="DPITexture" id="DPITexture_5b7ti"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
+"
+base_scale = 3.0
+
+[sub_resource type="DPITexture" id="DPITexture_dvdtt"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+base_scale = 3.0
+
+[sub_resource type="DPITexture" id="DPITexture_i5qic"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".37\"/></svg>
+"
+base_scale = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12kdf"]
+content_margin_left = 4.0
+content_margin_top = 10.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[node name="MainMenu" type="Control" unique_id=780509740]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5b7ti")
+
+[node name="Main Menu Buttons" type="VBoxContainer" parent="." unique_id=904624854]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -62.0
+offset_right = 116.5
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Main Menu Buttons" unique_id=1265462541]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="Level Select" type="Button" parent="Main Menu Buttons" unique_id=1415879082]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Level Select"
+
+[node name="Options" type="Button" parent="Main Menu Buttons" unique_id=699599391]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Options"
+
+[node name="Exit" type="Button" parent="Main Menu Buttons" unique_id=751796115]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=1113607068]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.5
+offset_top = -344.0
+offset_right = 269.5
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 190
+text = "Game"
+
+[node name="Level Select Buttons" type="HBoxContainer" parent="." unique_id=1827496247]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -8.0
+offset_right = 204.0
+offset_bottom = 156.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level 1" type="Button" parent="Level Select Buttons" unique_id=447178816]
+layout_mode = 2
+theme_override_font_sizes/font_size = 58
+text = "Level 1"
+
+[node name="Level 2" type="Button" parent="Level Select Buttons" unique_id=1208261718]
+layout_mode = 2
+theme_override_font_sizes/font_size = 58
+text = "Level 2"
+
+[node name="Option Contents" type="VBoxContainer" parent="." unique_id=1446190365]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -71.0
+offset_right = 159.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bitches" type="CheckBox" parent="Option Contents" unique_id=271970143]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+button_pressed = true
+text = "Bitches"
+
+[node name="MoneyText" type="Label" parent="Option Contents" unique_id=1796190727]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Money : 0$"
+
+[node name="MoneySlider" type="HSlider" parent="Option Contents" unique_id=1369130607]
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+theme_override_icons/grabber = SubResource("DPITexture_5b7ti")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_dvdtt")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_i5qic")
+theme_override_styles/slider = SubResource("StyleBoxFlat_12kdf")
+rounded = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="Main Menu Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Main Menu Buttons/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Main Menu Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main Menu Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Level Select Buttons/Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="toggled" from="Option Contents/Bitches" to="." method="_on_bitches_toggled"]
+[connection signal="value_changed" from="Option Contents/MoneySlider" to="." method="_on_money_slider_value_changed"]

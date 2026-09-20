@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d31ewt8ogy7jv"]
+
+[ext_resource type="Texture2D" uid="uid://v8tviw3x1lda" path="res://mickey.png" id="1_16vqg"]
+[ext_resource type="Script" uid="uid://bn8fr8vgk13ha" path="res://PlayerController.gd" id="2_aky0p"]
+[ext_resource type="Texture2D" uid="uid://ccei40oeaqb4r" path="res://micleek.png" id="2_x2u3o"]
+[ext_resource type="PackedScene" uid="uid://ckmsdll67f5xx" path="res://pause_menu.tscn" id="4_aky0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xadyu"]
+size = Vector2(1600, 1600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxr5g"]
+size = Vector2(1600, 1600)
+
+[node name="Level2" type="Node" unique_id=2133195451]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1457315952]
+position = Vector2(875.00006, 318)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1537347351]
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_16vqg")
+
+[node name="MickeyCollisionArea" type="Area2D" parent="Node2D" unique_id=411186259]
+position = Vector2(-534.99976, -207.49992)
+scale = Vector2(0.1, 0.1)
+
+[node name="MickeyCollision" type="CollisionShape2D" parent="Node2D/MickeyCollisionArea" unique_id=1465737203]
+shape = SubResource("RectangleShape2D_xadyu")
+debug_color = Color(0, 0.6, 0.69803923, 0.40784314)
+
+[node name="SnapPoint" type="Node2D" parent="Node2D" unique_id=942261673]
+position = Vector2(0.00024414063, 0.00012207031)
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1713752730 node_paths=PackedStringArray("SnapTarget", "CollisionArea")]
+position = Vector2(253, 292)
+script = ExtResource("2_aky0p")
+SnapTarget = NodePath("../Node2D/SnapPoint")
+CollisionArea = NodePath("../Node2D/MickeyCollisionArea")
+CurrentLevelNumber = 1
+
+[node name="Leeky" type="Sprite2D" parent="Node2D2" unique_id=332774165]
+z_index = 1
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_x2u3o")
+
+[node name="MickeyLeekCollisionArea" type="Area2D" parent="Node2D2/Leeky" unique_id=1920044048]
+position = Vector2(-534.99976, -207.49992)
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/Leeky/MickeyLeekCollisionArea" unique_id=1828223965]
+shape = SubResource("RectangleShape2D_dxr5g")
+
+[node name="PauseMenu" parent="." unique_id=2092808646 instance=ExtResource("4_aky0p")]
+
+[connection signal="area_entered" from="Node2D2/Leeky/MickeyLeekCollisionArea" to="Node2D2" method="_on_player_collision_area_entered"]
