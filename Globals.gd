@@ -14,7 +14,7 @@ func _ready() -> void:
 	attempted_money = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func change_scene(scene_path : String) -> void:
@@ -23,7 +23,7 @@ func change_scene(scene_path : String) -> void:
 func _change_scene_deferred(scene_path : String) -> void:
 	current_scene.free()
 	# Load the new scene.
-	var s = ResourceLoader.load(scene_path)
+	var s : Resource = ResourceLoader.load(scene_path)
 
 	# Instance the new scene.
 	current_scene = s.instantiate()

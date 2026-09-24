@@ -50,58 +50,58 @@ func _process(delta: float) -> void:
 	
 	_main_menu_processes[state].call(delta)
 
-func splash_process(delta: float) -> void:
+func splash_process(_delta: float) -> void:
 	pass
 	
-func main_process(delta: float) -> void:
+func main_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		transition_to = states.SPLASH
 		release_ignored_actions.append("ui_cancel")
 
-func level_select_process(delta: float) -> void:
+func level_select_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		transition_to = states.MAIN
 		release_ignored_actions.append("ui_cancel")
 	
-func options_process(delta: float) -> void:
+func options_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		transition_to = states.MAIN
 		release_ignored_actions.append("ui_cancel")
 	
-func splash_to_main_transition(delta: float) -> bool:
+func splash_to_main_transition(_delta: float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_INHERIT
 	$"Main Menu Buttons".visible = true
 	$Label.set_position(Vector2(306.5, -20.0))
 	return true
 
-func main_to_splash_transition(delta:float) -> bool:
+func main_to_splash_transition(_delta : float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_DISABLED
 	$"Main Menu Buttons".visible = false
 	$Label.set_position(Vector2(306.5, 100))
 	return true
 	
-func main_to_level_select_transition(delta:float)->bool:
+func main_to_level_select_transition(_delta : float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_DISABLED
 	$"Main Menu Buttons".visible = false
 	$"Level Select Buttons".process_mode = Node.PROCESS_MODE_INHERIT
 	$"Level Select Buttons".visible = true
 	return true
 
-func level_select_to_main_transition(delta:float)->bool:
+func level_select_to_main_transition(_delta : float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_INHERIT
 	$"Main Menu Buttons".visible = true
 	$"Level Select Buttons".process_mode = Node.PROCESS_MODE_DISABLED
 	$"Level Select Buttons".visible = false
 	return true
 
-func main_to_options_transition(delta:float)->bool:
+func main_to_options_transition(_delta : float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_DISABLED
 	$"Main Menu Buttons".visible = false
 	$"Option Contents".process_mode = Node.PROCESS_MODE_INHERIT
 	$"Option Contents".visible = true
 	return true
 	
-func options_to_main_transition(delta:float)->bool:
+func options_to_main_transition(_delta : float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_INHERIT
 	$"Main Menu Buttons".visible = true
 	$"Option Contents".process_mode = Node.PROCESS_MODE_DISABLED
@@ -109,7 +109,7 @@ func options_to_main_transition(delta:float)->bool:
 	return true
 
 func _unhandled_input(event: InputEvent) -> void:
-	var ignored = false
+	var ignored : bool = false
 	for i in range(len(release_ignored_actions)-1, -1, -1):
 		if event.is_action_released(release_ignored_actions[i]):
 			release_ignored_actions.remove_at(i)
@@ -138,8 +138,8 @@ func update_money()->void:
 		return
 	$"Option Contents/MoneyText".text = str("Money : ",int(Globals.attempted_money),"$")
 
-func _on_money_slider_value_changed(value: float) -> void:
-	Globals.attempted_money = value
+func _on_money_slider_value_changed(value : float) -> void:
+	Globals.attempted_money = int(value)
 	update_money()
 
 func _on_bitches_toggled(toggled_on: bool) -> void:
