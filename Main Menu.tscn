@@ -132,7 +132,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 button_pressed = true
-text = "Bitches"
+text = "Bitches !!!!!"
 
 [node name="MoneyText" type="Label" parent="Option Contents" unique_id=1796190727]
 layout_mode = 2
