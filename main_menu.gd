@@ -21,7 +21,7 @@ func _ready() -> void:
 	$"Level Select Buttons".visible = false
 	$"Option Contents".process_mode = Node.PROCESS_MODE_DISABLED
 	$"Option Contents".visible = false
-	$Label.set_position(Vector2(306.5, 100))
+	$Title.set_position(Vector2(306.5, 100))
 	
 	_main_menu_processes = {
 		states.SPLASH : splash_process,
@@ -71,13 +71,13 @@ func options_process(delta: float) -> void:
 func splash_to_main_transition(delta: float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_INHERIT
 	$"Main Menu Buttons".visible = true
-	$Label.set_position(Vector2(306.5, -20.0))
+	$Title.set_position(Vector2(306.5, -20.0))
 	return true
 
 func main_to_splash_transition(delta:float) -> bool:
 	$"Main Menu Buttons".process_mode = Node.PROCESS_MODE_DISABLED
 	$"Main Menu Buttons".visible = false
-	$Label.set_position(Vector2(306.5, 100))
+	$Title.set_position(Vector2(306.5, 100))
 	return true
 	
 func main_to_level_select_transition(delta:float)->bool:
