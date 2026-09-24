@@ -72,7 +72,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
-[node name="Label" type="Label" parent="." unique_id=1113607068]
+[node name="Title" type="Label" parent="." unique_id=1113607068]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,8 +85,10 @@ offset_right = 269.5
 offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 190
-text = "Game"
+theme_override_font_sizes/font_size = 100
+text = "You just lost the
+Game"
+horizontal_alignment = 1
 
 [node name="Level Select Buttons" type="HBoxContainer" parent="." unique_id=1827496247]
 layout_mode = 1
